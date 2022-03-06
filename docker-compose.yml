@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  client:
+    container_name: client
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+  server:
+    container_name: server
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./ChatService
+    ports:
+      - "8081:80"
+    
